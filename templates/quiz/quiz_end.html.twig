@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% block title %}Résultats{% endblock %}
+{% block body %}
+    <h1 class="text-center padding-bottom">Résultats</h1>
+    <div class="text-center">
+        <h2 class="padding-bottom">Vous avez obtenu un score de {{score}}/{{total}}</h2>
+        <a class="btn btn-primary" href={{ path('quiz_list') }}>Retour à la liste des quizz</a>
+    </div>
+{% endblock %}

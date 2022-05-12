@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}    
+{% block title %}Quiz {{quizz.name}}{% endblock %}
+
+{%block body%}
+<h1 class="text-center padding-bottom">Quiz "{{quizz.name}}"</h1>
+<h2 class="text-center padding-bottom">Nombre de questions : {{ question_number }}</h2>
+<div class="text-center">
+    <a class="btn btn-primary" href={{ path('quiz_play', {'id': quizz.id, 'id_question' : 1}) }}>Commencer le quiz</a>
+</div>
+{%endblock%}

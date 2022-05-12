@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}    
+{% block title %}Quiz {{quizz.name}}{% endblock %}
+
+{%block body%}
+<h1 class="text-center padding-bottom">Quiz "{{quizz.name}}"</h1>
+<h2 class="text-center text-decoration-underline padding-bottom">Question n°{{question_number}} : {{question.question}}</h2>
+{%set reponse_index = 1 %}
+{%for reponse in reponses %}
+{%if result is not defined%}
+    <div class="d-flex justify-content-between pb-5">
+        <h3 class="">Réponse n°{{reponse_index}}: {{reponse.reponse}}</h3>
+        <form method="POST">
+            <input type="hidden" name="id_answer" value={{reponse.id}}>
+            <button type="submit" class="btn btn-secondary">Selectionner cette réponse</button>
+        </form>
+    </div>
+    {%else%}
+        {%if reponse.reponseExpected == "1" %}
+        <div class="d-flex justify-content-between pb-5">
+            <h3 class="text-success">Réponse : {{reponse.reponse}}</h3>
+        </div>
+        {%endif%}
+    {%endif%}
+    {%set reponse_index = reponse_index + 1 %}
+    {% endfor %}
+    {%if result is defined%}
+    <div class="text-center">
+        {%if result == "true" %}
+            <h3 class="text-success">Vous avez répondu correctement :D</h3>
+        {%else%}
+            <h3 class="text-danger">Vous n'avez pas répondu correctement :(</h3>
+        {%endif%}
+        <a class="btn btn-primary" href={{ path('quiz_play', {'id': quizz.id, 'id_question' : question_number+1}) }}>Question suivante</a>
+    </div>
+    {%endif%}
+{%endblock%}

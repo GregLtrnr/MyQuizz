@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Profile</h1>
+
+    {{ form_start(form) }}
+        {{ form_row(form.name)}}
+        {{ form_row(form.email)}}
+        {{ form_row(form.password)}}
+        <br>
+        <div class="d-grid gap-2">
+        <input type="submit" value="Mettre à jour" class="btn btn-primary margin-bottom-5">
+        </div>
+    {{ form_end(form) }}
+
+{% endblock %}

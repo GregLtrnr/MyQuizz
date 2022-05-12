@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center padding-bottom">Vos scores:</h1>
+    {%for historique in history%}
+
+        <h2>- Quizz <a href={{ path('quiz_show',{'id': historique.categorie_id}) }}>{{historique.categorie_name}}</a> : {{historique.score}}/{{historique.nb_questions}}</h2>
+    {%endfor%}
+{% endblock %}

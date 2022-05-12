@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un MyQuiz{% endblock %}
+
+{% block body %}
+    <h1 class="text-center padding-bottom">Créer un MyQuiz</h1>
+    <h3 class="text-center"><b>Déroulement</b>: Tout d'abord, vous devez choisir entre 10 ou 20 questions à créer.</h3>
+    <h3 class="text-center padding-bottom">Ensuite, vous n'avez plus qu'à remplir les questions avec leurs réponses.</h3>
+    <form method="post">
+        <div class="align-middle flex">
+        <label for="" class="label-create">Nombre de questions:</label>
+        <select class="select-size" name="nb_questions" id="" class="align">
+            <option value="10">10</option>
+            <option value="20">20</option>
+        </select>
+        <input type="submit" value="Valider" class="btn btn-primary margin-bottom-5">
+        </div>
+    </form>
+{% endblock %}

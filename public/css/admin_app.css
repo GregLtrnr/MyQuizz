@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+.margin{
+    margin-left: 15%;
+    margin-right: 15%;
+}
+.margin-10{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+body{
+    background-color: #414141;
+    height: 100%;
+}
+a{
+    color:white;
+    text-decoration: none;
+    
+}
+.quizz-logo{
+    padding-top:125px;
+}
+.padding-bottom{
+    padding-bottom: 60px;
+}
+.margin-bottom-5{
+    margin-bottom: 10px;
+}
+.content{
+    background-color: white;
+    padding: 20px;
+    border-radius: 0px 0px 5px 5px;
+    height: 100%;
+}
+.label-create{
+    font-size: 30px;
+
+}
+.select-size{
+    font-size: 25px;
+    height: 35px;
+}
+
+
+h1{
+    font-family: 'Bangers', cursive;
+    font-size: 80px;
+}

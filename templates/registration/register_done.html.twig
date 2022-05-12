@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+<h1 class="text-center">Votre compté a été crée</h1>
+<h2 class="text-center">Vous avez reçu un mail pour faire vérifier votre compte.</h2>
+<h2 class="text-center">⚠️Ceci est nécéssaire pour pouvoir créer un quiz.⚠️</h2>
+<h2 class="text-center">Vous pouvez cependant tout de même jouer sur les quiz existants!</h2>
+<br>
+<div class="text-center">
+    <a class="text-center" href={{ path('home') }}><button class="btn btn-primary btn-lg">Retour à l'accueil</button></a>
+</div>
+
+{% endblock %}

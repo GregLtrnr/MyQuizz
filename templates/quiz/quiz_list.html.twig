@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}    
+{% block title %}Liste des Quizz{% endblock %}
+
+{%block body%}
+    <h1 class="text-center padding-bottom">Nos quizz</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Quizz</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {% for quiz in quizz %}
+        <tbody>
+            <tr>
+                <td>{{ quiz.name }}</td>
+                <td><a href="{{ path('quiz_show', {'id': quiz.id}) }}"><button class="btn btn-primary">Jouer</button></a></td>
+            </tr>
+        {% endfor %}
+    </ul>
+{%endblock%}

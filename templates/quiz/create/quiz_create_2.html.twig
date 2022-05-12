@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyQuiz Accueil{% endblock %}
+
+{% block body %}
+<h1 class="text-center ">Créer un MyQuiz</h1>
+        {{form_start(form)}}
+        {{form_row(form.title)}}
+        {% for i in 1..nb_questions %}
+        <div>
+                {{ form_label(attribute(form, 'question' ~ i)) }}
+        </div>
+                {{ form_widget(attribute(form, 'question' ~ i)) }}
+                {%for j in 1..3 %}
+                {{ form_label(attribute(form, i~'reponse'~j))}}
+                {{form_widget(attribute(form, i~'reponse'~j))}}
+                {%endfor%}
+                {{form_label(attribute(form,'bonne_reponse'~i))}}
+                {{form_widget(attribute(form,'bonne_reponse'~i))}}
+
+        {%endfor%}
+        <br>
+        <div class="d-grid gap-2">
+                <input type="submit" value="Valider" class="btn btn-primary margin-bottom-5">
+        </div>
+        {{form_end(form)}}
+{% endblock %}

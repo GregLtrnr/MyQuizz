@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MyQuiz Accueil{% endblock %}
+
+{% block body %}
+<h1 class="text-center ">Votre MyQuiz est prêt !</h1>
+<h3 class="text-center">Cliquer <b><a href={{ path("quiz_show", {"id":quiz_id}) }}>ICI </a></b> pour y acceder ou via la <a href={{ path("quiz_list") }}>liste des quizz</a>.</h3>
+{% endblock %}
