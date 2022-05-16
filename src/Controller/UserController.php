@@ -12,8 +12,9 @@ use App\Repository\HistoriqueRepository;
 use App\Repository\QuestionRepository;
 use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Mime\Email;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Mailer\MailerInterface;
 
 class UserController extends AbstractController
@@ -24,11 +25,17 @@ class UserController extends AbstractController
         $this->requestStack = $requestStack;
     }
     #[Route('/profile', name: 'user_profile')]
-    public function index(): Response
+    public function index(ManagerRegistry $doctrine, Request $request): Response
     {
         if($this->getUser()){
             $user = $this->getUser();
             $form = $this->createForm(LoginType::class, $user);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $doctrine->getManager();
+                $entityManager->persist($user);
+                $entityManager->flush();
+            }
             return $this->render('user/profile.html.twig', [
                 'form' => $form->createView(),
                 'user' => $user,
@@ -78,12 +85,8 @@ class UserController extends AbstractController
     public function sendEmail(MailerInterface $mailer)
     {
         $email = (new Email())
-            ->from('hello@example.com')
+            ->from('support@myquiz.fr')
             ->to($this->getUser()->getEmail())
-            //->cc('cc@example.com')
-            //->bcc('bcc@example.com')
-            //->replyTo('fabien@example.com')
-            //->priority(Email::PRIORITY_HIGH)
             ->subject('Time for Symfony Mailer!')
             ->text('Sending emails is fun again!')
             ->html('<p>See Twig integration for better HTML integration!</p>');

@@ -22,7 +22,7 @@ class Questions20Type extends AbstractType
                 }
                 $builder->add('bonne_reponse'.$i, ChoiceType::class, ['label' => 'Bonne réponse:', "required" => true, 'choices' => ['1' => '1', '2' => '2', '3' => '3'],'label_attr' => ['class' => 'label-create']]);
             }
-            $builder->add('nb_questions', HiddenType::class,['data'=>10]);
+            $builder->add('nb_questions', HiddenType::class,['data'=>20]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

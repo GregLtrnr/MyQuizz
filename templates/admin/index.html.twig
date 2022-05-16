@@ -6,8 +6,7 @@
 <h1 class="text-center padding-bottom">Panel d'administration</h1>
 
 <div class="d-grid gap-2">
-    <button class="btn btn-lg btn-dark"><a href={{ path("app_admin_user_index") }}>Utilisateurs</a></button>
-    <button class="btn btn-lg btn-dark"><a href="">Quizz</a></button>
-    <button class="btn btn-lg btn-dark"><a href="">statistiques</a></button>
+    <a class="btn btn-lg btn-dark" href={{ path("app_admin_user_index") }}>Utilisateurs</a>
+    <a class="btn btn-lg btn-dark" href={{ path("app_admin_categorie_index") }}>Quizz</a>
   </div>
 {% endblock %}

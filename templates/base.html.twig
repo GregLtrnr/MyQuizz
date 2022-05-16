@@ -39,18 +39,24 @@
                     <a class="nav-link" href={{ path('app_register') }}>S'inscrire</a>
                   </li>
                   {%else%}
+                  {%if is_granted('ROLE_ADMIN') %}
+                  <li>
+                    <a class="nav-link" href={{ path('app_admin') }}>Admin</a>
+                  </li>
+                  {%endif%}
                   <li class="nav-item">
                     <a class="nav-link" href="/profile">{{app.user.name}}</a>
                   </li>
+
                   <li>
                     <a class="nav-link" href={{ path('app_logout') }}>Se déconnecter</a>
                   </li>
                 </ul>
                 {%endif%}
-                <form class="d-flex" method="post">
+                {# <form class="d-flex" method="post">
                   <input class="form-control me-sm-2" type="text" placeholder="rechercher">
                   <button class="btn btn-secondary my-2 my-sm-0" type="submit">Rechercher</button>
-                </form>
+                </form> #}
               </div>
             </div>
         </nav>

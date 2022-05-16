@@ -1,0 +1,39 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Categorie index{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Liste des Quizz</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Score moyen</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.name }}</td>
+                <td>{{ categorie.percentage}}</td>
+                <td>
+                    <a class ="btn btn-primary" href="{{ path('app_admin_categorie_show', {'id': categorie.id}) }}">show</a>
+                    <a class="btn btn-warning" href="{{ path('app_admin_categorie_edit', {'id': categorie.id}) }}">edit</a>
+                    <a class="btn btn-danger" href="{{ path('app_admin_categorie_delete', {'id': categorie.id}) }}">delete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-success" href="{{ path('app_admin_categorie_new') }}">Create new</a>
+    <a class="btn btn-primary" href="{{ path('app_admin') }}">Retour au menu principale</a>
+{% endblock %}

@@ -11,7 +11,12 @@ class AdminController extends AbstractController
     #[Route('/admin', name: 'app_admin')]
     public function index(): Response
     {
+        if(!$this->isGranted('ROLE_ADMIN')){
+            return $this->redirectToRoute('home');
+        }
         return $this->render('admin/index.html.twig', [
+
         ]);
     }
+    
 }

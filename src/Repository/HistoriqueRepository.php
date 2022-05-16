@@ -58,22 +58,18 @@ class HistoriqueRepository extends ServiceEntityRepository
             ->getResult();
         return $result;
     }
-    // /**
-    //  * @return Historique[] Returns an array of Historique objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Historique[] Returns an array of Historique objects
+     */
+    public function findByHistorique($id_user,$id_categorie)
     {
-        return $this->createQueryBuilder('h')
-            ->andWhere('h.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('h.id', 'ASC')
-            ->setMaxResults(10)
+        $result = $this->createQueryBuilder('h')
+            ->andWhere("h.user = $id_user and h.categorie = $id_categorie")
+            // ->select('count(id_categorie)')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
+        return $result;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Historique

@@ -2,19 +2,19 @@
 {% block title %}Liste des Quizz{% endblock %}
 
 {%block body%}
-    <h1 class="text-center padding-bottom">Nos quizz</h1>
+    <h1 class="text-center padding-bottom-5">Nos quizz</h1>
     <table class="table">
         <thead>
             <tr>
-                <th>Quizz</th>
-                <th>Actions</th>
+                <th style="font-size:30px">Quizz</th>
+                <th style="font-size:30px">Actions</th>
             </tr>
         </thead>
         {% for quiz in quizz %}
         <tbody>
             <tr>
-                <td>{{ quiz.name }}</td>
-                <td><a href="{{ path('quiz_show', {'id': quiz.id}) }}"><button class="btn btn-primary">Jouer</button></a></td>
+                <td style="width:85%;font-size:20px">{{ quiz.name }}</td>
+                <td ><a href="{{ path('quiz_show', {'id': quiz.id}) }}"><button class="btn btn-primary btn-lg">Jouer</button></a></td>
             </tr>
         {% endfor %}
     </ul>

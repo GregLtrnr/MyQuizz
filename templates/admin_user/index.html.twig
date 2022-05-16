@@ -3,7 +3,7 @@
 {% block title %}User index{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">User index</h1>
+    <h1 class="text-center">Liste des utilisateurs</h1>
 
     <table class="table">
         <thead>
@@ -12,7 +12,7 @@
                 <th>Email</th>
                 <th>Name</th>
                 <th>Roles</th>
-                <th>Password</th>
+                <th>Last Connection</th>
                 <th>IsVerified</th>
                 <th>actions</th>
             </tr>
@@ -24,11 +24,19 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-                <td>{{ user.password }}</td>
+                <td>{{ user.lastConnection ? user.lastConnection|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('app_admin_user_show', {'id': user.id}) }}"><button class="btn btn-primary">show</button></a>
-                    <a href="{{ path('app_admin_user_edit', {'id': user.id}) }}"><button class="btn btn-warning">edit</button></a>
+                    <a class ="btn btn-primary" href="{{ path('app_admin_user_show', {'id': user.id}) }}">show</a>
+                    <a class="btn btn-warning" href="{{ path('app_admin_user_edit', {'id': user.id}) }}">edit</a>
+                    <a class="btn btn-danger" href="{{ path('app_admin_user_delete', {'id': user.id}) }}">delete</a>
+                    <a class="btn btn-success" href="{{ path('app_admin_user_setAdmin', {'id': user.id}) }}">
+                        {% if user.roles[0] == 'ROLE_ADMIN' %}
+                            Remove admin
+                        {% else %}
+                            Make admin
+                        {% endif %}
+                    </a>
                 </td>
             </tr>
         {% else %}
@@ -39,7 +47,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_user_new') }}"><button class="btn btn-success">Créer un utilisateur</button></a>
-     <a href="{{ path('app_admin') }}"><button class="btn btn-primary">Retour au menu principale</button></a>
+    <a class="btn btn-success" href="{{ path('app_admin_user_new') }}">Créer un utilisateur</a>
+     <a class="btn btn-primary" href="{{ path('app_admin') }}">Retour au menu principale</a>
 
 {% endblock %}

@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -26,6 +27,7 @@ class QuizAuthenticator extends AbstractLoginFormAuthenticator
     public function __construct(UrlGeneratorInterface $urlGenerator)
     {
         $this->urlGenerator = $urlGenerator;
+
     }
 
     public function authenticate(Request $request): Passport
@@ -48,7 +50,7 @@ class QuizAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-
+        // $this->getUser()->setLastConnection();
         // For example:
         return new RedirectResponse($this->urlGenerator->generate('home'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
